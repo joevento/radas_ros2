@@ -1,1 +1,1 @@
-# radas_ros2
+# Rugged ATV Data Acquisition System (RADAS)
