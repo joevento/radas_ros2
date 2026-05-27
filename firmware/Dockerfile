@@ -34,13 +34,6 @@ RUN wget -q "https://downloads-bsl.baslerweb.com/software/pylon%2026.04/pylon-26
 WORKDIR /ros2_ws
 RUN mkdir -p src
 
-# Get the basler pylon apis
-RUN curl -L "https://downloads-bsl.baslerweb.com/software/pylon%2026.05/pylon-26.05.0_linux-x86_64_debs.tar.gz" \
-    -o /tmp/pylon.tar.gz \
-    && tar -xzf /tmp/pylon.tar.gz -C /tmp \
-    && dpkg -i /tmp/pylon-*_amd64.deb \
-    && rm -rf /tmp/pylon*
-
 # Clone Hesai, Pylon, and Ublox
 RUN git clone --recursive https://github.com/HesaiTechnology/HesaiLidar_ROS_2.0.git src/hesai_ros_driver && \
     git clone https://github.com/basler/pylon-ros-camera.git src/pylon-ros2-camera && \
