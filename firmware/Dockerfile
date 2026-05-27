@@ -14,6 +14,10 @@ RUN apt-get update && apt-get install -y \
     cmake \
     libusb-1.0-0-dev \
     libudev-dev \
+    libx11-6 \
+    libxext6 \
+    libxrender1 \
+    libxtst6 \
     ros-jazzy-diagnostic-updater \
     ros-jazzy-pcl-ros \
     ros-jazzy-nmea-msgs \
@@ -30,8 +34,8 @@ RUN wget -q "https://downloads-bsl.baslerweb.com/software/pylon%2026.04/pylon-26
     rm -rf /tmp/pylon /tmp/pylon.tar.gz && \
     rm -rf /var/lib/apt/lists/*
 
-# Set up the workspace
-WORKDIR /ros2_ws
+# Set up the underlaying package workspace
+WORKDIR /underlay_ws
 RUN mkdir -p src
 
 # Clone Hesai, Pylon, and Ublox
@@ -52,6 +56,15 @@ RUN . /opt/ros/jazzy/setup.sh && \
 
 # Source the ROS 2 setup and the workspace in every new shell
 RUN echo "source /opt/ros/jazzy/setup.bash" >> ~/.bashrc && \
+    echo "source /underlay_ws/install/setup.bash" >> ~/.bashrc && \
     echo "source /ros2_ws/install/setup.bash" >> ~/.bashrc
 
+# Set up the firmware workspace
+WORKDIR /ros2_ws
+RUN mkdir -p src
+
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]
 CMD ["bash"]
