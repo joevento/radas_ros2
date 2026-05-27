@@ -65,3 +65,9 @@ Contains a lot of information on many tools used during development. Does not re
  ```shell
  docker compose exec ros2_dev /bin/bash
  ```
+
+ 4. If you want to use GUI apps inside the docker container run this before step 3.
+
+ ```shell
+ xhost +local:docker
+ ```
