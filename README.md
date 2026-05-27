@@ -15,3 +15,24 @@ The Rugged ATV Data Acquisition System, or RADAS, is a versatile, rugged sensor 
  - NIR-camera
  - IMU
  - RTK-GPS
+
+# Guide
+Contains a lot of information on many tools used during development. Does not reflect the final deployed system. 
+#### **Pylonviewer quickstart**
+
+ 1. Run pylonviewer from root:
+
+ `sudo /opt/pylon/bin/pylonviewer`
+
+ 2. Run pylonviewer GigE configurator:
+
+ `tools -> GigE configurator`
+
+ Choose 
+ `Optimize complete system`
+ and then run `Configure`
+
+
+ 3. Reboot the system and relaunch pylonviewer to save the configuration settings. You're now able to see your attached cameras
+
+ 4. If this does not work, try using "Add remote GigE camera" and entering the camera's IP-address. Although, this speaks of a different underlying issue. 
