@@ -28,7 +28,9 @@ Contains a lot of information on many tools used during development. Does not re
 
  1. Run pylonviewer from root:
 
- `sudo /opt/pylon/bin/pylonviewer`
+ ```shell
+ sudo /opt/pylon/bin/pylonviewer
+ ```
 
  2. Run pylonviewer GigE configurator:
 
@@ -48,12 +50,18 @@ Contains a lot of information on many tools used during development. Does not re
 
  1. Switch to firmware subfolder:
 
- `cd ./firmware/`
+ ```shell
+ cd ./firmware/
+ ```
 
  2. Build the docker container:
 
- `docker compose up --build -d` 
+ ```shell
+ docker compose up --build -d
+ ```
 
  3. Connect with a shell:
 
- `docker compose exec ros2_dev /bin/bash`
+ ```shell
+ docker compose exec ros2_dev /bin/bash
+ ```
